@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bisistitches</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="header__inner">
+
+      <!-- Hamburger: mobile only (hidden on desktop in the CSS) -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+        <span class="menu-toggle__bar"></span>
+        <span class="menu-toggle__bar"></span>
+        <span class="menu-toggle__bar"></span>
+      </button>
+
+      <!-- Navigation: slide-down panel on mobile, inline on the left on desktop -->
+      <nav class="nav" id="primaryNav" aria-label="Main">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="index.html">Home</a></li>
+          <li><a class="nav__link" href="about.html">About us</a></li>
+
+          <li class="nav__item--dropdown">
+            <button class="nav__link nav__dropdown-btn" id="shopToggle" aria-expanded="false" aria-controls="shopMenu">
+              Shop
+              <svg class="nav__chevron" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+                <path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="dropdown" id="shopMenu">
+              <li><a class="dropdown__link" href="shop-men.html">Shop men</a></li>
+              <li><a class="dropdown__link" href="shop-women.html">Shop women</a></li>
+              <li><a class="dropdown__link" href="#luxury">Shop luxury</a></li>
+            </ul>
+          </li>
+
+          <li><a class="nav__link" href="#contact">Contact</a></li>
+          <li><a class="nav__link" href="faq.html">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <!-- Logo: plain text for now. Later, swap the text for an <img>. -->
+      <a class="logo" href="index.html" aria-label="Bisistitches home">Bisistitches</a>
+
+      <!-- Right side: Shop Now (desktop only) + like button with count -->
+      <div class="header__actions">
+        <a class="btn btn--cta" href="#shop">Shop now</a>
+        <button class="like-btn" id="likeBtn" aria-label="Open liked items, 0 saved" aria-expanded="false" aria-controls="likesDrawer">
+          <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 20.5s-7.5-4.7-9.4-9.2C1.2 8 3 4.8 6.2 4.5c1.9-.2 3.6.8 4.6 2.3l1.2 1.7 1.2-1.7c1-1.5 2.7-2.5 4.6-2.3 3.2.3 5 3.5 3.6 6.8-1.9 4.5-9.4 9.2-9.4 9.2z"
+                  fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+          <span class="like-btn__count" id="likeCount" hidden>0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ============ LIKED ITEMS DRAWER ============
+       Slides in from the right when the heart is tapped.
+       The items inside are built by script.js from what the visitor has liked. -->
+  <div class="drawer-overlay" id="drawerOverlay" hidden></div>
+  <aside class="drawer" id="likesDrawer" aria-labelledby="drawerTitle">
+    <div class="drawer__head">
+      <h2 class="drawer__title" id="drawerTitle">Your liked items</h2>
+      <button class="drawer__close" id="drawerClose" aria-label="Close liked items">
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M4 4l12 12M16 4L4 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <p class="drawer__empty" id="drawerEmpty">Nothing saved yet. Tap the heart on any item to add it here.</p>
+    <ul class="drawer__list" id="drawerList"></ul>
+
+    <div class="drawer__foot" id="drawerFoot" hidden>
+      <div class="drawer__total">
+        <span>Total</span>
+        <span id="drawerTotal">0</span>
+      </div>
+      <a class="btn drawer__checkout" id="orderNow" href="#" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Order now</a>
+    </div>
+  </aside>
+
+  <!-- ============ HERO ============ -->
+  <main>
+    <section class="hero">
+      <div class="hero__inner">
+
+        <!-- Image slot. Replace this div with: <img src="images/hero.jpg" alt="..."> -->
+        <div class="hero__media" role="img" aria-label="Hero image placeholder">
+          <img src="images/hero.JPG" alt="">
+        </div>
+
+        <div class="hero__content">
+          <h1 class="hero__title">Clothes made to fit you</h1>
+          <p class="hero__lead">Bisistitches is a tailoring house. Choose from our ready collections, or have something stitched to your measurements.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ SHOP SECTION ============
+         Asks the visitor who they are shopping for. Each square is one link. -->
+    <section class="shop" id="shop" aria-labelledby="shopTitle">
+      <div class="shop__inner">
+        <h2 class="section__title" id="shopTitle">What are you shopping for?</h2>
+        <p class="section__lead">Pick a collection and we will take you straight to it.</p>
+
+        <div class="shop__choices">
+          <a class="choice" href="shop-men.html">
+            <!-- Replace this div with: <img src="images/men.jpg" alt=""> -->
+            <div class="choice__media"><img src="images/men.jpg" alt=""></div>
+            <span class="choice__label">Shop men</span>
+          </a>
+
+          <a class="choice" href="shop-women.html">
+            <!-- Replace this div with: <img src="images/women.jpg" alt=""> -->
+            <div class="choice__media"><img src="images/women.jpg" alt=""></div>
+            <span class="choice__label">Shop women</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LUXURY SECTION ============
+         Two carousels (males, females). The product cards are NOT written here:
+         script.js builds them from a product list and puts them inside each <ul data-products>. -->
+    <section class="luxury" id="luxury" aria-labelledby="luxuryTitle">
+      <div class="luxury__inner">
+        <h2 class="section__title" id="luxuryTitle">Luxury Selections</h2>
+
+        <!-- Carousel 1: males -->
+        <div class="luxury__group" data-carousel>
+          <div class="carousel__head">
+            <h3 class="carousel__title">For Males</h3>
+            <div class="carousel__controls">
+              <button class="carousel__btn" data-dir="prev" aria-label="Previous items for males">
+                <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H4m0 0l5-5m-5 5l5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button class="carousel__btn" data-dir="next" aria-label="Next items for males">
+                <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12m0 0l-5-5m5 5l-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+          <ul class="carousel__track" data-products="men" tabindex="0" aria-label="Luxury selections for males"></ul>
+        </div>
+
+        <!-- Carousel 2: females -->
+        <div class="luxury__group" data-carousel>
+          <div class="carousel__head">
+            <h3 class="carousel__title">For Females</h3>
+            <div class="carousel__controls">
+              <button class="carousel__btn" data-dir="prev" aria-label="Previous items for females">
+                <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H4m0 0l5-5m-5 5l5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button class="carousel__btn" data-dir="next" aria-label="Next items for females">
+                <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12m0 0l-5-5m5 5l-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+          <ul class="carousel__track" data-products="women" tabindex="0" aria-label="Luxury selections for females"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============
+         One testimonial in focus at a time, the others faded beside it.
+         script.js builds the cards from a list and moves the track with the arrows. -->
+    <section class="testimonials" id="testimonials" aria-labelledby="testiTitle">
+      <div class="testimonials__inner">
+        <h2 class="section__title" id="testiTitle">Here&rsquo;s what our customers say</h2>
+        <p class="section__lead">A few words from the people we have stitched for.</p>
+
+        <div class="testi" data-testi role="region" aria-roledescription="carousel" aria-label="Customer testimonials">
+          <button class="testi__btn testi__btn--prev" data-dir="prev" aria-label="Previous testimonial">
+            <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H4m0 0l5-5m-5 5l5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+
+          <div class="testi__viewport">
+            <ul class="testi__track"></ul>
+          </div>
+
+          <button class="testi__btn testi__btn--next" data-dir="next" aria-label="Next testimonial">
+            <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12m0 0l-5-5m5 5l-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NEWSLETTER ============
+         Email box + Subscribe button. The form is handled in script.js (section 6). -->
+    <section class="newsletter" id="newsletter" aria-labelledby="newsTitle">
+      <div class="newsletter__inner">
+        <h2 class="section__title" id="newsTitle">Join our newsletter</h2>
+        <p class="section__lead">Be the first to hear about new collections and offers.</p>
+
+        <form class="newsletter__form" id="newsletterForm" novalidate>
+          <label class="visually-hidden" for="newsEmail">Email address</label>
+          <input class="newsletter__input" type="email" id="newsEmail" name="email" placeholder="Enter your email" autocomplete="email" required>
+          <button class="btn newsletter__btn" type="submit">Subscribe</button>
+        </form>
+        <p class="newsletter__msg" id="newsletterMsg" role="status"></p>
+      </div>
+    </section>
+
+    <!-- ============ SHOWCASE (auto-moving image strip) ============
+         Heading and text on top, then a row of images that glides sideways by itself.
+         script.js fills .marquee__track from a list of images. -->
+    <section class="showcase" aria-labelledby="showcaseTitle">
+      <div class="showcase__inner">
+        <h2 class="section__title section__title--xl" id="showcaseTitle">Every stitch made with care</h2>
+        <p class="section__lead">We hold each outfit to a high standard, from the first measurement to the final stitch.</p>
+      </div>
+
+      <div class="marquee" role="group" aria-label="Examples of our work">
+        <div class="marquee__track" id="marqueeTrack"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============
+       Placeholders: social links (#), address, email and phone. Replace with your real details. -->
+  <footer class="footer">
+    <div class="footer__inner">
+
+      <!-- Brand + social icons -->
+      <div class="footer__brand">
+        <a class="logo footer__logo" href="index.html" aria-label="Bisistitches home">Bisistitches</a>
+        <ul class="footer__social">
+          <li>
+            <a href="#" aria-label="Bisistitches on Facebook">
+              <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12c0 4.99 3.66 9.13 8.44 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99C18.34 21.13 22 16.99 22 12c0-5.52-4.48-10-10-10z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="Bisistitches on Instagram">
+              <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact details: icon on the left, text on the right -->
+      <section class="footer__col" id="contact" aria-labelledby="footContact">
+        <h2 class="footer__title" id="footContact">Contact</h2>
+        <ul class="footer__contact">
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0113 0c0 5.4-6.5 11-6.5 11z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+            <span>Your shop address goes here, Area, City, State.</span>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 7l9 6 9-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            <a href="tel:+2340000000000">+234 000 000 0000</a>
+          </li>
+        </ul>
+        <a class="btn btn--whatsapp footer__whatsapp" data-whatsapp href="#"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Chat on WhatsApp</a>
+      </section>
+
+      <!-- Products -->
+      <nav class="footer__col" aria-labelledby="footProducts">
+        <h2 class="footer__title" id="footProducts">Products</h2>
+        <ul class="footer__list">
+          <li><a href="shop-men.html">Shop men</a></li>
+          <li><a href="shop-women.html">Shop women</a></li>
+          <li><a href="#luxury">Shop luxury</a></li>
+        </ul>
+      </nav>
+
+      <!-- Sitemap (same pages as the header menu) -->
+      <nav class="footer__col" aria-labelledby="footSitemap">
+        <h2 class="footer__title" id="footSitemap">Sitemap</h2>
+        <ul class="footer__list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer__bottom">
+      <p>&copy; <span id="year">2026</span> Bisistitches. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
