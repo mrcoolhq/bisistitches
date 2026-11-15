@@ -505,8 +505,8 @@ if (newsletterForm) newsletterForm.addEventListener('submit', async (e) => {
    Edit this list to change the images. src: '' shows a grey placeholder.
    Keep at least 8 so the strip is long enough for wide screens. */
 const showcaseImages = [
-  { src: '/images/show1.JPEG', alt: '' }, { src: '/images/show2.JPEG', alt: '' }, { src: '/images/show3.JPEG', alt: '' }, { src: '/images/show4.JPEG', alt: '' },
-  { src: '/images/show5.JPEG', alt: '' }, { src: '/images/show6.JPEG', alt: '' }, { src: '/images/show7.JPG', alt: '' }, { src: '/images/show8.JPG', alt: '' }
+  { src: '/images/show1.jpeg', alt: '' }, { src: '/images/show2.jpeg', alt: '' }, { src: '/images/show3.jpeg', alt: '' }, { src: '/images/show4.jpeg', alt: '' },
+  { src: '/images/show5.jpeg', alt: '' }, { src: '/images/show6.jpeg', alt: '' }, { src: '/images/show7.JPG', alt: '' }, { src: '/images/show8.jpg', alt: '' }
 ];
 
 const marqueeTrack = document.getElementById('marqueeTrack');
@@ -558,7 +558,7 @@ const shopData = {
   men: {
     label: "Men's",
     categories: [
-      { id: 'shirts', label: 'Native', image: '/images/native.JPG' },
+      { id: 'shirts', label: 'Native', image: '/images/native.jpg' },
       { id: 'suits', label: 'Kaftans', image: '/images/kaftan.JPG' },
       { id: 'bottoms', label: 'Agbada', image: '/images/agbada.JPG' }
     ],
