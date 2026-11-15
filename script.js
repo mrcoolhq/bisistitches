@@ -200,7 +200,7 @@ drawerList.addEventListener('click', (e) => {
 });
 
 /* Product heart buttons (for when you build product cards). Any button written like
-   <button data-like data-id="kaftan-1" data-name="Embroidered set" data-price="45000" data-image="img/1.jpg">
+   <button data-like data-id="kaftan-1" data-name="Embroidered set" data-price="45000" data-image="img/1.JPG">
    will toggle that product in the list when clicked. */
 document.addEventListener('click', (e) => {
   const btn = e.target.closest('[data-like]');
@@ -224,16 +224,16 @@ render();
    (Names and prices below are placeholders.) */
 const luxuryProducts = {
   men: [
-    { id: 'lux-m-1', name: 'Luxury outfit 1', price: 180000, image: '/images/luxury/men-1.jpg' },
-    { id: 'lux-m-2', name: 'Luxury outfit 2', price: 220000, image: '/images/luxury/men-2.jpg' },
-    { id: 'lux-m-3', name: 'Luxury outfit 3', price: 195000, image: '/images/luxury/men-3.jpg' },
-    { id: 'lux-m-4', name: 'Luxury outfit 4', price: 250000, image: '/images/luxury/men-4.jpg' }
+    { id: 'lux-m-1', name: 'Luxury outfit 1', price: 180000, image: '/images/luxury/men-1.JPG' },
+    { id: 'lux-m-2', name: 'Luxury outfit 2', price: 220000, image: '/images/luxury/men-2.JPG' },
+    { id: 'lux-m-3', name: 'Luxury outfit 3', price: 195000, image: '/images/luxury/men-3.JPG' },
+    { id: 'lux-m-4', name: 'Luxury outfit 4', price: 250000, image: '/images/luxury/men-4.JPG' }
   ],
   women: [
-    { id: 'lux-w-1', name: 'Luxury outfit 1', price: 190000, image: '/images/luxury/women-1.jpg' },
-    { id: 'lux-w-2', name: 'Luxury outfit 2', price: 230000, image: '/images/luxury/women-2.jpg' },
-    { id: 'lux-w-3', name: 'Luxury outfit 3', price: 210000, image: '/images/luxury/women-4.jpg' },
-    { id: 'lux-w-4', name: 'Luxury outfit 4', price: 260000, image: '/images/luxury/women-3.jpg' }
+    { id: 'lux-w-1', name: 'Luxury outfit 1', price: 190000, image: '/images/luxury/women-1.JPG' },
+    { id: 'lux-w-2', name: 'Luxury outfit 2', price: 230000, image: '/images/luxury/women-2.JPG' },
+    { id: 'lux-w-3', name: 'Luxury outfit 3', price: 210000, image: '/images/luxury/women-4.JPG' },
+    { id: 'lux-w-4', name: 'Luxury outfit 4', price: 260000, image: '/images/luxury/women-3.JPG' }
   ]
 };
 
@@ -342,10 +342,10 @@ render();
    image: '' shows a grey placeholder until you add a real file path.
    (All of the text below is placeholder.) */
 const testimonials = [
-  { name: 'Customer 1', detail: 'Outfit stitched', image: '/images/test1.jpg', quote: 'Replace this with what your customer said about the fitting, the fabric and the service.' },
-  { name: 'Customer 2', detail: 'Outfit stitched', image: '/images/test2.jpg', quote: 'Replace this with what your customer said about the fitting, the fabric and the service.' },
-  { name: 'Customer 3', detail: 'Outfit stitched', image: '/images/test3.jpg', quote: 'Replace this with what your customer said about the fitting, the fabric and the service.' },
-  { name: 'Customer 4', detail: 'Outfit stitched', image: '/images/test4.jpg', quote: 'Replace this with what your customer said about the fitting, the fabric and the service.' }
+  { name: 'Customer 1', detail: 'Outfit stitched', image: '/images/test1.JPG', quote: 'Replace this with what your customer said about the fitting, the fabric and the service.' },
+  { name: 'Customer 2', detail: 'Outfit stitched', image: '/images/test2.JPG', quote: 'Replace this with what your customer said about the fitting, the fabric and the service.' },
+  { name: 'Customer 3', detail: 'Outfit stitched', image: '/images/test3.JPG', quote: 'Replace this with what your customer said about the fitting, the fabric and the service.' },
+  { name: 'Customer 4', detail: 'Outfit stitched', image: '/images/test4.JPG', quote: 'Replace this with what your customer said about the fitting, the fabric and the service.' }
 ];
 
 const testiRoot = document.querySelector('[data-testi]');
@@ -505,8 +505,8 @@ if (newsletterForm) newsletterForm.addEventListener('submit', async (e) => {
    Edit this list to change the images. src: '' shows a grey placeholder.
    Keep at least 8 so the strip is long enough for wide screens. */
 const showcaseImages = [
-  { src: '/images/show1.jpeg', alt: '' }, { src: '/images/show2.jpeg', alt: '' }, { src: '/images/show3.jpeg', alt: '' }, { src: '/images/show4.jpeg', alt: '' },
-  { src: '/images/show5.jpeg', alt: '' }, { src: '/images/show6.jpeg', alt: '' }, { src: '/images/show7.jpg', alt: '' }, { src: '/images/show8.jpg', alt: '' }
+  { src: '/images/show1.JPEG', alt: '' }, { src: '/images/show2.JPEG', alt: '' }, { src: '/images/show3.JPEG', alt: '' }, { src: '/images/show4.JPEG', alt: '' },
+  { src: '/images/show5.JPEG', alt: '' }, { src: '/images/show6.JPEG', alt: '' }, { src: '/images/show7.JPG', alt: '' }, { src: '/images/show8.JPG', alt: '' }
 ];
 
 const marqueeTrack = document.getElementById('marqueeTrack');
@@ -558,45 +558,45 @@ const shopData = {
   men: {
     label: "Men's",
     categories: [
-      { id: 'shirts', label: 'Native', image: '/images/native.jpg' },
-      { id: 'suits', label: 'Kaftans', image: '/images/kaftan.jpg' },
-      { id: 'bottoms', label: 'Agbada', image: '/images/agbada.jpg' }
+      { id: 'shirts', label: 'Native', image: '/images/native.JPG' },
+      { id: 'suits', label: 'Kaftans', image: '/images/kaftan.JPG' },
+      { id: 'bottoms', label: 'Agbada', image: '/images/agbada.JPG' }
     ],
     products: [
-      { id: 'm-1', name: 'Shirt 1', cat: 'shirts', price: 32500, image: '/images/men-1.jpg' },
-      { id: 'm-2', name: 'Suit 1', cat: 'suits', price: 115000, image: '/images/men-2.jpg' },
-      { id: 'm-3', name: 'Trousers 1', cat: 'bottoms', price: 40000, image: '/images/men-3.jpg' },
-      { id: 'm-4', name: 'Shirt 2', cat: 'shirts', price: 40000, image: '/images/men-4.jpg' },
-      { id: 'm-5', name: 'Suit 2', cat: 'suits', price: 122500, image: '/images/men-5.jpg' },
-      { id: 'm-6', name: 'Trousers 2', cat: 'bottoms', price: 47500, image: '/images/men-6.jpg' },
-      { id: 'm-7', name: 'Shirt 3', cat: 'shirts', price: 47500, image: '/images/men-7.jpg' },
-      { id: 'm-8', name: 'Suit 3', cat: 'suits', price: 130000, image: '/images/men-8.jpg' },
-      { id: 'm-9', name: 'Trousers 3', cat: 'bottoms', price: 55000, image: '/images/men-2.jpg' },
-      { id: 'm-10', name: 'Shirt 4', cat: 'shirts', price: 55000, image: '/images/men-3.jpg' },
-      { id: 'm-11', name: 'Suit 4', cat: 'suits', price: 137500, image: '/images/men-1.jpg' },
-      { id: 'm-12', name: 'Trousers 4', cat: 'bottoms', price: 62500, image: '/images/men-5.jpg' }
+      { id: 'm-1', name: 'Shirt 1', cat: 'shirts', price: 32500, image: '/images/men-1.JPG' },
+      { id: 'm-2', name: 'Suit 1', cat: 'suits', price: 115000, image: '/images/men-2.JPG' },
+      { id: 'm-3', name: 'Trousers 1', cat: 'bottoms', price: 40000, image: '/images/men-3.JPG' },
+      { id: 'm-4', name: 'Shirt 2', cat: 'shirts', price: 40000, image: '/images/men-4.JPG' },
+      { id: 'm-5', name: 'Suit 2', cat: 'suits', price: 122500, image: '/images/men-5.JPG' },
+      { id: 'm-6', name: 'Trousers 2', cat: 'bottoms', price: 47500, image: '/images/men-6.JPG' },
+      { id: 'm-7', name: 'Shirt 3', cat: 'shirts', price: 47500, image: '/images/men-7.JPG' },
+      { id: 'm-8', name: 'Suit 3', cat: 'suits', price: 130000, image: '/images/men-8.JPG' },
+      { id: 'm-9', name: 'Trousers 3', cat: 'bottoms', price: 55000, image: '/images/men-2.JPG' },
+      { id: 'm-10', name: 'Shirt 4', cat: 'shirts', price: 55000, image: '/images/men-3.JPG' },
+      { id: 'm-11', name: 'Suit 4', cat: 'suits', price: 137500, image: '/images/men-1.JPG' },
+      { id: 'm-12', name: 'Trousers 4', cat: 'bottoms', price: 62500, image: '/images/men-5.JPG' }
     ]
   },
   women: {
     label: "Women's",
     categories: [
-      { id: 'dresses', label: 'Lace', image: '/images/women5.jpg' },
-      { id: 'tops', label: 'Gown', image: '/images/women12.jpg' },
-      { id: 'skirts', label: 'Blouse', image: '/images/women11.jpg' }
+      { id: 'dresses', label: 'Lace', image: '/images/women5.JPG' },
+      { id: 'tops', label: 'Gown', image: '/images/women12.JPG' },
+      { id: 'skirts', label: 'Blouse', image: '/images/women11.JPG' }
     ],
     products: [
-      { id: 'w-1', name: 'Dress 1', cat: 'dresses', price: 72500, image: '/images/women1.jpg' },
-      { id: 'w-2', name: 'Top 1', cat: 'tops', price: 35000, image: '/images/women2.jpg' },
-      { id: 'w-3', name: 'Skirt 1', cat: 'skirts', price: 40000, image: '/images/women3.jpg' },
-      { id: 'w-4', name: 'Dress 2', cat: 'dresses', price: 80000, image: '/images/women4.jpg' },
-      { id: 'w-5', name: 'Top 2', cat: 'tops', price: 42500, image: '/images/women5.jpg' },
-      { id: 'w-6', name: 'Skirt 2', cat: 'skirts', price: 47500, image: '/images/women6.jpg' },
-      { id: 'w-7', name: 'Dress 3', cat: 'dresses', price: 87500, image: '/images/women7.jpg' },
-      { id: 'w-8', name: 'Top 3', cat: 'tops', price: 50000, image: '/images/women8.jpg' },
-      { id: 'w-9', name: 'Skirt 3', cat: 'skirts', price: 55000, image: '/images/women9.jpg' },
-      { id: 'w-10', name: 'Dress 4', cat: 'dresses', price: 95000, image: '/images/women10.jpg' },
-      { id: 'w-11', name: 'Top 4', cat: 'tops', price: 57500, image: '/images/women11.jpg' },
-      { id: 'w-12', name: 'Skirt 4', cat: 'skirts', price: 62500, image: '/images/women12.jpg' }
+      { id: 'w-1', name: 'Dress 1', cat: 'dresses', price: 72500, image: '/images/women1.JPG' },
+      { id: 'w-2', name: 'Top 1', cat: 'tops', price: 35000, image: '/images/women2.JPG' },
+      { id: 'w-3', name: 'Skirt 1', cat: 'skirts', price: 40000, image: '/images/women3.JPG' },
+      { id: 'w-4', name: 'Dress 2', cat: 'dresses', price: 80000, image: '/images/women4.JPG' },
+      { id: 'w-5', name: 'Top 2', cat: 'tops', price: 42500, image: '/images/women5.JPG' },
+      { id: 'w-6', name: 'Skirt 2', cat: 'skirts', price: 47500, image: '/images/women6.JPG' },
+      { id: 'w-7', name: 'Dress 3', cat: 'dresses', price: 87500, image: '/images/women7.JPG' },
+      { id: 'w-8', name: 'Top 3', cat: 'tops', price: 50000, image: '/images/women8.JPG' },
+      { id: 'w-9', name: 'Skirt 3', cat: 'skirts', price: 55000, image: '/images/women9.JPG' },
+      { id: 'w-10', name: 'Dress 4', cat: 'dresses', price: 95000, image: '/images/women10.JPG' },
+      { id: 'w-11', name: 'Top 4', cat: 'tops', price: 57500, image: '/images/women11.JPG' },
+      { id: 'w-12', name: 'Skirt 4', cat: 'skirts', price: 62500, image: '/images/women12.JPG' }
     ]
   }
 };
